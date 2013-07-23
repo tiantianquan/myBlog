@@ -1,8 +1,6 @@
-from flask.ext.sqlalchemy import SQLAlchemy
+from .base import db
 from datetime import datetime
 
-
-db = SQLAlchemy()
 
 class Topic(db.Model):
 	id = db.Column(db.Integer, primary_key=True)

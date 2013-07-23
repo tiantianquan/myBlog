@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block mainbody %}
+
+      <form action="/register" method=post>
+    	 {{ wtf.quick_form(form) }}
+      </form>
+
+{% endblock %}

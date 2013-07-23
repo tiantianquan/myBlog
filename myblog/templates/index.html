@@ -1,33 +1,14 @@
 {% extends "base.html" %}
 
 
-{% block body_content %}
-    <div class="navbar navbar-fixed-top">
-      <div class="navbar-inner">
-        <div class="container">
-          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </a>
-          <a class="brand" href="/">myBlog</a>
-          <div class="nav-collapse">
-            <ul class="nav">
-              <li class="active"><a href="/">Home</a></li>
-              <li><a href="/create">Create</a></li>
-            </ul>
-          </div><!--/.nav-collapse -->
-        </div>
-      </div>
-    </div>
+{% block mainbody %}
 
 
-    <div class="container">
     {% for topic in topics %}	
     	<h2>{{ topic.title }}</h2>
     	<time>{{topic.create_time.strftime("%Y-%m-%d %H:%M:%S")}}</time>
         <p>{{ topic.content }}</p>
     {% endfor %}
-    </div>	
 
+    	
 {% endblock %}

@@ -1,1 +1,1 @@
-from .topic import *
+from .view import *
