@@ -48,13 +48,17 @@ def create():
 def register():
 	form = Registerform()
 	if request.method == 'POST':
-		username = request.form['username']
-		password = request.form['password']
+		session['username'] = request.form['username']
+		session['password'] = request.form['password']
 		email = request.form['email']
-		account = Account(username,password,email)
+		account = Account(session['username'],session['password'],email)
 		db.session.add(account)
 		db.session.commit()
+
+		load_current_user()
 		return redirect('/')
+		
+
 	return render_template('register.html', form=form)
 
 @bp.route('/login', methods=['GET','POST'])
@@ -73,6 +77,13 @@ def login():
 		if not user:	
 			error = 'WRONG ACCOUNT'
 	return render_template('login.html', form=form, error=error)
+
+@bp.route('/logout')
+def logout():
+	if g.user:
+		session['username'] = None
+		session['password'] = None
+	return redirect('/')
 
 
 
